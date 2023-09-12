@@ -1,7 +1,7 @@
 # Proyek Django Pemrograman Berbasis Platform
-Nama        : Tajri Mintahtihal Anhaar
-NPM         : 2206030312
-Kelas       : PBP F
+Nama        : Tajri Mintahtihal Anhaar\
+NPM         : 2206030312\
+Kelas       : PBP F\
 Kode Asdos  : VCY
 
 ## Pendahuluan
