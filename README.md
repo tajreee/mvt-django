@@ -46,6 +46,11 @@ Link Adaptable: https://ngopy.adaptable.app/
     - MVVM atau Model-View-ViewModel adalah suatu konsep arsitektur yang memiliki komponen mirip dengan MVC, hanya saja ViewModel digunakan sebagai pengganti Controller.
     - Perbedaan ketiganya terdapat pada Template, yaitu Template akan mengontrol data yang akan ditampilkan, sedangkan Controller dan VIewModel digunakan hanya untuk menghubungkan Model dan View. Selain itu, MVC dan MVVM sering digunakan pada pembuatan aplikasi yang besar seperti aplikasi dekstop, sedangkan MVT sering digunakan pada pembuatan aplikasi web seperti Django.
 
+Referensi:
+- https://ediweb.dev/python/cara-membuat-virtual-environment-python
+- https://fittechinova.com/blog/detail/mvc-vs-mvp-vs-mvvm-apa-perbedaan-diantara-ketiganya-dan-mana-yang-terbaik-diantara-mereka
+
+
 ## Pertanyaan dan Jawaban Tugas 3
 1. Apa perbedaan antara form POST dan form GET dalam Django?
     - Pada POST, nilai variable tidak ditampilkan di URL, tidak dibatasi panjang string, biasanya digunakan sebagai input data melalui form, dan digunakan untuk mengirimkan data-data penting seperti password.
@@ -70,15 +75,24 @@ Link Adaptable: https://ngopy.adaptable.app/
     - Melakukan add, commit, dan push ke GitHub
 
 **Screenshot Postman 5 URL**
+- URL create_item
 ![create-item.html](/images/create-item-views.png)
+
+- URL XML
 ![xml views](/images/xml-views.png)
+
+- URL JSON
 ![json views](/images/json-views.png)
+
+- URL XML by ID
 ![xml-by-id views](/images/xml-by-id-views.png)
+
+- URL JSON by ID
 ![json-by-id views](/images/json-by-id-views.png)
 
 
 
 Referensi:
-https://gist.github.com/rririanto/442f0590578ca3f8648aeba1e25f8762
-https://aws.amazon.com/id/compare/the-difference-between-json-xml/
+- https://gist.github.com/rririanto/442f0590578ca3f8648aeba1e25f8762
+- https://aws.amazon.com/id/compare/the-difference-between-json-xml/
 
