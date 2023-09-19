@@ -1,2 +1,38 @@
-<h1>Welcome to {{title_store}}</h1>
-<h5>created by {{name}} from {{class}}</h5>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to {{title_store}}</h1>
+    <h5>Created by {{name}} from {{class}}</h5>
+    <br>
+    <h4>Anda telah menambahkan {{total_item}} barang ke dalam Inventory.</h4>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Description</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for item in items %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.grade}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_item' %}">
+    <button>
+        Add New Item
+    </button>
+</a>
+
+{% endblock content %}
