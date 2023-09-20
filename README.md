@@ -75,6 +75,9 @@ Referensi:
     - Melakukan add, commit, dan push ke GitHub
 
 **Screenshot Postman 5 URL**
+- URL main.html
+![main.html](/images/main-views.png)
+
 - URL create_item
 ![create-item.html](/images/create-item-views.png)
 
