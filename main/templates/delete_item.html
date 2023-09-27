@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Delete Item</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="delete">
+
+    <h1>Delete Item</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Hapus Item</button>
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock content %}

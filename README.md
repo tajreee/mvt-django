@@ -99,3 +99,35 @@ Referensi:
 - https://gist.github.com/rririanto/442f0590578ca3f8648aeba1e25f8762
 - https://aws.amazon.com/id/compare/the-difference-between-json-xml/
 
+## Pertanyaan dan Jawaban Tugas 4
+1. Apa itu Django *UserCreationForm*, dan jelaskan apa kelebihan dan kekurangannya?
+    - *UserCreationForm* adalah impor formulir bawaan dari Django yang menyediakan layanan untuk memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. Dengan itu, pengguna baru dapat mendaftar dengan mudah di aplikasi web tanpa harus menulis kode dari awal.
+    - Kelebihan dari *UserCreationForm* yang dapat dilihat dari hasil menjalankan aplikasi web yaitu, mudah digunakan, fleksibel karena dapat ditambahkan dan dikurangi sesuai keinginan, dan terhubung langsung dengan Django sehingga tersimpan langsung di dalam database.
+    - Kekurangan dari *UserCreationForm* yang dapat dilihat dari hasil menjalankan aplikasi web yaitu, kurangnya kustomisasi untuk kebutuhan atribut dan kurangnya tampilan desain yang sesuai dengan keinginan.
+
+2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+    - Autentikasi digunakan untuk memverifikasi pengguna yang login ke aplikasi web dan Otoritasi digunakan untuk menentukan apa yang boleh dilakukan oleh pengguna yang diautentikasi.
+    - Keduanya penting untuk membangun aplikasi yang aman dan tersturktur, yang melindungi data pengguna dan memberikan akses sesuai dengan izin masing-masing.
+
+3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+    - Cookie adalah informasi mengenai sejarah jejak dan aktivitas yang dilakukan ketika menelusuri sebuah aplikasi web.
+    - Django menggunakan cookies untuk mengatur cookiesnya sesuai dengan yang kita inginkan. Django juga menggunakan cookies untuk menghapus cookies terkait aktivitas yang dilakukan pengguna. Selain itu, Django juga menggunakan untuk mengakses semua cookies yang ada di aplikasi web.
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+    - Umumnya, cookies tidak membawa berbagai jenis virus ke komputer kita ketika melakukan perpindahan data dari website ke komputer atau sebaliknya. Namun, perlu diingat bahwa kita tidak tahu bagaimana internet digunakan oleh orang lain. Data pada cookies memiliki risiko potensial yang harus diwaspadai agar tidak digunakan dicuri oleh oknum-oknum tidak bertanggung jawab. Untuk itu, kita perlu berhati-hati dan waspada ketika mengunjungi aplikasi web yang mencurigakan.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step!
+    - Membuat fungsi registrasi, login, dan logout dengan bawaan dari Django disertai dengan sedikit perubahan pada pesannya.
+    - Menghubungkan fungsi dengan urls.py agar terjadi sinkronisasi pada aplikasi web.
+    - Membuat 2 akun untuk menguji form Models apakah dapat berjalan dengan baik atau tidak.
+    - Tiap akun mengisi form Models tersebut sebanyak 3 data.
+    - Menghubungkan Models dengan user untuk membatasi akses data yang dapat dilihat oleh user dengan melakukan filter Models sesuai dengan akun user agar data yang diinput hanya bisa dilihat oleh user tersebut saja.
+    - Menampilkan user yang login dan modifikasi fungsi login dan logout agar dapat menyimpan aktivitas user ketika menjelajahi aplikasi web dengan menerapkan dan mengatur cookies pada fungsi tersebut.
+    - Menambahkan isi README.md untuk menjawab pertanyaan Tugas 3.
+    - Mencari referensi di internet untuk menjawab pertanyaan tersebut.
+    - Melakukan add-commit-push ke GitHub.
+
+Referensi:
+- https://www.pythontutorial.net/django-tutorial/django-cookies/
+- https://docs.djangoproject.com/en/4.2/topics/auth/#:~:text=The%20Django%20authentication%20system%20handles%20both%20authentication%20and,authentication%20is%20used%20to%20refer%20to%20both%20tasks.
+- https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-3
