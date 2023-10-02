@@ -131,3 +131,39 @@ Referensi:
 - https://www.pythontutorial.net/django-tutorial/django-cookies/
 - https://docs.djangoproject.com/en/4.2/topics/auth/#:~:text=The%20Django%20authentication%20system%20handles%20both%20authentication%20and,authentication%20is%20used%20to%20refer%20to%20both%20tasks.
 - https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-3
+
+## Pertanyaan dan Jawaban Tugas 5
+
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+    - Element Selector adalah memilih element yang spesifik untuk diubah tampilannya menggunakan CSS. Element Selector memiliki manfaat untuk mengatur tampilan elemen tertentu bersanaab secara langsung. Waktu yang paling tepat Menggunakan Element Selector dalam CSS adalah ketika ingin mengatur suatu elemen dengan tampilan yang sama contohnya Element Selector pada **body**. Menerapkan CSS pada **body** akan langsung mengubah tampilan body di aplikasi web tersebut di manapun path yang sedang di buka sehingga tidak perlu mengatur masing-masing path untuk mendapatkan tampilan yang sama.
+
+2.  Jelaskan HTML5 Tag yang kamu ketahui.
+    - <header> = tag html5 yang berfungsi untuk menentukan letak header pada aplikasi web.
+    - <main> = tag html5 yang berfungsi untuk menentukan letak konten utama pada aplikasi web.
+    - <footer> = tag html5 yang berfungsi untuk menentukan letak footer pada aplikasi web.
+    - <nav> = tag html5 yang berfungsi untuk memberikan navigasi ke konten yang sesuai.
+    - <section> = tag html5 yang berfungsi untuk menentukan suatu section dari suatu posisi. Mirip dengan <div>
+    - <summary> = tag html5 yang berfungsi untuk memberikan judul pada tag <details>.
+    - <details> = tag html5 yang berfungsi untuk memberikan informasi tambahan.
+
+3. Jelaskan perbedaan antara margin dan padding.
+    - Margin adalah suatu atribut pada rule CSS yang berguna untuk memberikan jarak antar elemen di sekitarnya.
+    - Padding adalah suatu atribut pada rule CSS yang berguna untuk memberikan jarak antar konten dengan batas kontainernya. 
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+    - Bootstrap memberikan komponen tampilan yang telah dirancang sebelumnya sehingga lebih terstruktur dan konsisten. Sedangkan Tailwind mengedepankan pendekatan "utility-first" sehingga memberikan kebebasan untuk kreatif.
+    - Bootstrap memberikan *framework* yang relatif terstruktur dan telah dirancang sebelumnya sehingga memberikan stabilitas dan kemudahan dalam menggunakannya. Sedangkan Tailwind memberikan kebebasan desain sehingga lebih fleksibel dibanding Bootstrap.
+    - Bootstrap cenderung memiliki ukuran file yang besar karena sudah disediakan komponen dan fitur yang siap dipakai. Sedangkan Tailwind dirancang agar lebih ringan dalam ukuran file, namun dapat bertambah besar jika banyak utility yang digunakan.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    - Menghubungkan file static CSS ke project agar bisa dilakukan pengodean mengatur desain tiap template html.
+    - Menentukan bagaimana template akan didesain.
+    - Mencari template di internet untuk dijadikan referensi desain.
+    - Mengaplikasikan referensi pada template html yang ingin didesain.
+    - Melakukan pengujian agar tidak terjadi kesalahan pengodean CSS seperti wrap jika ukuran kontainer diperkecil.
+
+
+
+Referensi:
+- https://www.w3schools.blog/html5-tags
+- https://www.pemburukode.com/perbedaan-margin-dan-padding-css/

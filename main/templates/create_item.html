@@ -1,19 +1,44 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h1>Add New Product</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Add Item"/>
-            </td>
-        </tr>
-    </table>
-</form>
-
-{% endblock %}
+<div class="container-ci">
+    <div class="create_item">
+        <div class="ci-content">
+            <h1>Add New Product</h1>
+            <div class="ci-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="model">
+                        <div class="ci-name-grade">
+                            <div class="ci-name">
+                                <label for="{{ form.name.id_for_label}}">Name: </label>
+                                <p>{{form.name}}</p>
+                            </div>
+                            <div class="ci-grade">
+                                <label for="{{ form.grade.id_for_label }}">Grade: </label>
+                                <p>{{ form.grade }}</p>
+                            </div>
+                        </div>
+                        <div class="ci-amount-cat">
+                            <div class="ci-amount">
+                                <label for="{{ form.amount.id_for_label }}">Amount: </label>
+                                <p>{{ form.amount }}</p>
+                            </div>
+                            <div class="ci-cat">
+                                <label for="{{ form.category.id_for_label }}">Category: </label>
+                                <p>{{ form.category }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ci-desc">
+                        <label for="{{ form.description.id_for_label }}">Description: </label>
+                        <p>{{ form.description }}</p>
+                    </div>
+                    <input type="submit" value="Add Item"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    {% endblock %}
