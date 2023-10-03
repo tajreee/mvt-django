@@ -15,12 +15,14 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
+    last_item = items.last()
 
     context = {
         'title_store': 'NgopY',
         'name' : request.user.username,
         'class': 'PBP F',
         'items' : items,
+        'last_item' : last_item,
         'total_item' : items.count(),
         'last_login' : request.COOKIES['last_login'],
     }

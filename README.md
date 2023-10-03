@@ -138,13 +138,13 @@ Referensi:
     - Element Selector adalah memilih element yang spesifik untuk diubah tampilannya menggunakan CSS. Element Selector memiliki manfaat untuk mengatur tampilan elemen tertentu bersanaab secara langsung. Waktu yang paling tepat Menggunakan Element Selector dalam CSS adalah ketika ingin mengatur suatu elemen dengan tampilan yang sama contohnya Element Selector pada **body**. Menerapkan CSS pada **body** akan langsung mengubah tampilan body di aplikasi web tersebut di manapun path yang sedang di buka sehingga tidak perlu mengatur masing-masing path untuk mendapatkan tampilan yang sama.
 
 2.  Jelaskan HTML5 Tag yang kamu ketahui.
-    - <header> = tag html5 yang berfungsi untuk menentukan letak header pada aplikasi web.
-    - <main> = tag html5 yang berfungsi untuk menentukan letak konten utama pada aplikasi web.
-    - <footer> = tag html5 yang berfungsi untuk menentukan letak footer pada aplikasi web.
-    - <nav> = tag html5 yang berfungsi untuk memberikan navigasi ke konten yang sesuai.
-    - <section> = tag html5 yang berfungsi untuk menentukan suatu section dari suatu posisi. Mirip dengan <div>
-    - <summary> = tag html5 yang berfungsi untuk memberikan judul pada tag <details>.
-    - <details> = tag html5 yang berfungsi untuk memberikan informasi tambahan.
+    - <*header*> = tag html5 yang berfungsi untuk menentukan letak header pada aplikasi web.
+    - <*main*> = tag html5 yang berfungsi untuk menentukan letak konten utama pada aplikasi web.
+    - <*footer*> = tag html5 yang berfungsi untuk menentukan letak footer pada aplikasi web.
+    - <*nav*> = tag html5 yang berfungsi untuk memberikan navigasi ke konten yang sesuai.
+    - <*section*> = tag html5 yang berfungsi untuk menentukan suatu section dari suatu posisi. Mirip dengan <*div*>
+    - <*summary*> = tag html5 yang berfungsi untuk memberikan judul pada tag <*details*>.
+    - <*details*> = tag html5 yang berfungsi untuk memberikan informasi tambahan.
 
 3. Jelaskan perbedaan antara margin dan padding.
     - Margin adalah suatu atribut pada rule CSS yang berguna untuk memberikan jarak antar elemen di sekitarnya.
