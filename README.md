@@ -3,6 +3,8 @@ Nama        : Tajri Mintahtihal Anhaar\
 NPM         : 2206030312\
 Kelas       : PBP F\
 Kode Asdos  : VCY
+Link Web Deployment Tugas PBP:
+http://tajri-mintahtihal-tugas.pbp.cs.ui.ac.id/
 
 ## Pendahuluan
 Repositori ini digunakan sebagai direktori tugas proyek Django mata kuliah Pemrograman Berbasis Platform (PBP) tahun 2022/2023 Ganjil
