@@ -8,6 +8,7 @@
             content="width=device-width, initial-scale=1.0"
         />
         <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+        
         {% block meta %}
         {% endblock meta %}
     </head>
@@ -15,5 +16,7 @@
     <body>
         {% block content %}
         {% endblock content %}
+        <script src="{% static 'main/js/scripts.js' %}">
+        </script>   
     </body>
 </html>

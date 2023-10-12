@@ -162,8 +162,56 @@ Referensi:
     - Mengaplikasikan referensi pada template html yang ingin didesain.
     - Melakukan pengujian agar tidak terjadi kesalahan pengodean CSS seperti wrap jika ukuran kontainer diperkecil.
 
-
-
 Referensi:
 - https://www.w3schools.blog/html5-tags
 - https://www.pemburukode.com/perbedaan-margin-dan-padding-css/
+
+## Pertanyaan dan Jawaban Tugas 6
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+    - Asynchronous Programming merupakan suatu konsep pemrograman di mana program dapat berjalan langsung tanpa menunggu program lain selesai dijalankan. Sedangkan Synchronous Programming merupakan suatu konsep pemrograman di mana program dapat berjalan ketika program lain selesai dieksekusi.
+    - Asynchronous Programming menghindari pemblokiran tugas utama sehingga program yang telah dieksekusi akan langsung terupdate tanpa melakukan refresh pada tugas utama. Sedangkan Synchronous Programming melakukan pembekuan pada tugas utama sehingga harus menunggu semua program selesai, barulah ada update yang terjadi.
+    - Asynchronous Programming sering menggunakan promise dan callback untuk mengatasi error, sedangkan Synchronous Programming menggunakan try-catch untuk mengatasi error.
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+    - Pada paradigma event-driven programming, program diatur berdasarkan event yang terdapat di program. Program akan menunggu suatu event untuk dieksekusi. Javascript mendukung event-driven programming untuk membuat suatu aplikasi web menjadi lebih responsif sehingga ada fitur Event pada Javascript. Event adalah suatu kejadian/aktivitas pada aplikasi web seperti scroll, click, dan lain-lain. Contoh penerapan event-driven programming yang dilakukan pada tugas ini adalah yaitu untuk proses AJAX POST. Ketika suatu tombol yang mendukung event-driven programming yaitu click, maka ketika tombol itu diklik akan menjalankan fungsi yang ditempatkan pada tombol tersebut, contohnya akan menampilkan modal untuk menambahkan item.
+
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+    - AJAX adalah suatu teknologi yang ada di Javascript untuk melakukan pengiriman data dari XML maupun JSON. AJAX memungkinkan aplikasi web untuk memperbarui data secara asinkronus sehingga dapat memperbarui sebagian data pada halaman web tanpa perlu me-reload webnya. Penerapan Asynchronous Programming pada AJAX dilakukan dengan memberikan tambahan "async" pada function untuk menandai function tersebut sebagai fungsi yang dapat mengembalikan nilai secara asinkronus.
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+    - Fetch API dan JQuery adalah dua pendekatan yang berbeda untuk melakukan AJAX pada aplikasi web. Fetch API merupakan cara baru untuk melakukan pengiriman data pada aplikasi web sedangkan JQuery merupakan cara lama untuk melakukan pengiriman data pada aplikasi web menggunakan library JQuery. Perbedaan utama Fetch API dengan JQuery adalah Fetch API menggunakan Promise sehingga lebih sederhana, mudah dibaca dan fleksibel digunakan daripada JQuery yang memiliki sintaks yang lebih kompleks daripada Fetch API.
+    - Menurut saya, teknologi yang lebih baik untuk digunakan adalah dengan Fetch API karena mudah diimplementasikan dengan AJAX dan tidak perlu mengingat sintaks yang kompleks.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    - AJAX GET
+        - Membuat fungsi pada views.py untuk melakukan pengambilan item dengan ajax.
+        - Mengonfigurasi views.py ke urls.py.
+        - Membuat fungsi pada script Javascript untuk melakukan pengambilan data dengan ajax secara asinkronus
+        - Membuat fungsi refresh data yang mengambil data dari fungsi di atas dengan **await** untuk mendapatkan data dari hasil ajax fungsi di atas.
+        - Mengambil tag html yang dibutuhkan dalam pembuatan card.
+        - Memindahkan tag html yang telah diambil ke dalam fungsi refresh.
+        - Memasukkan tag html tersebut ke dalam sebuah string udah ditambahkan ke inner html yang diinginkan.
+    
+    - AJAX POST
+        - Membuat fungsi add item dengan ajax di views.py.
+        - menghubungkan fungsi add item dengan ajax ke url dengan path /create-ajax/.
+        - Membuat serangkaian tag html untuk modal ajaxnya.
+        - Menambahkan form dari html nya untuk dihubungkan dengan fungsi yang ada di views.py
+        - Membuat tombol untuk menampilkan modal ajaxnya.
+        - Membuat fungsi add item di script JavaScript dengan ajax secara asinkronus.
+        - Menghubungkan asinkronus refresh dengan fungsi di atas.
+
+    - AJAX DELETE
+        - Membuat fungsi delete di script dengan parameter id item yang memanggil fungsi delete di views.py dengan ajax
+        - Membuat modal delete item untuk menampilkan modal validasi ingin menghapus item atau tidak.
+        - Menghubungkan button yang ada dengan fungsi di script JavaScripts dengan parameter
+        - Membuat fungsionalitas dengan onclick agar ketika ditekan tombolnya, maka akan menampilkan modal validasi delete item.
+        - Ketika ditekan tombol "yes" pada modal validasi delete item tersebut, maka itemnya akan terhapus dari database Django
+    
+    - Melakukan perintah collectstatic.
+    - Melakukan git add, commit, push.
+    - Melakukan deployment ke ke *PaaS* pbp.cs.ui.ac.id.
+
+Referensi:
+https://reintech.io/blog/what-is-event-driven-programming-in-javascript 
+https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-5

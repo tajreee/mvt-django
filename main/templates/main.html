@@ -7,11 +7,13 @@
         <h1>Welcome to {{title_store}}</h1>
         <h5>Created by {{name}} from {{class}}</h5>
     </div> 
-    <div class="total-item">
-        <h4>Anda telah menambahkan {{total_item}} barang ke dalam Inventory.</h4>
+    <div class="total-item" id="total-item">
+
     </div>
-    <div class="list-item">
-        {% for item in items %}
+
+    {{form.name}}
+    <div id="product-card" class="list-item">
+        <!-- {% for item in items %}
             <div class="item {% if item == last_item %}last-item{% endif %}">
                 <div class="image-item">
                     ?
@@ -27,25 +29,105 @@
                         <p>x{{item.amount}}</p>
                     </div>
                     <div class="btn-cmd">
-                        <form method="POST" action="{% url 'main:add_amount' item.id %}">
+                        <form method="POST" action="{% url 'main:add_amount' item.pk %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-success btn-sm">+</button>
                         </form>
-                        <form method="POST" action="{% url 'main:delete_item' item.id %}">
+                        <form method="POST" action="{% url 'main:delete_item' item.pk %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">remove</button>
                         </form>
-                        <form method="POST" action="{% url 'main:reduce_amount' item.id %}">
+                        <form method="POST" action="{% url 'main:reduce_amount' item.pk %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">-</button>
                         </form>
                     </div>   
                 </div>
             </div>
-        {% endfor %}
+        {% endfor %} -->
     </div>
-    
-    <div class="btn">
+<div class="container-modal" id="c-modal">
+    <div id="background-modal" ></div>
+    <div class="create-modal" id="modal">
+        <div class="modal-content">
+            <h1>Add New Product</h1>
+            <div class="modal-form">
+                <form id="form" method="POST" action="">
+                    {% csrf_token %}
+                    <div class="model">
+                        <div class="ci-name-grade">
+                            <div class="ci-name">
+                                <label for="name">Name: </label>
+                                <input type="text" class="name-input" id="name" name="name">
+                            </div>
+                            <div class="ci-grade">
+                                <label for="grade">Grade: </label>
+                                <select id="grade" name="grade">
+                                    <option value="Common">Common</option>
+                                    <option value="Rare">Rare</option>
+                                    <option value="Epic">Epic</option>
+                                    <option value="Unique">Unique</option>
+                                    <option value="Legendary">Legendary</option>
+                                    <option value="Mythical">Mythical</option>
+                                    <option value="God">God</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ci-amount-cat">
+                            <div class="ci-amount">
+                                <label for="amount">Amount: </label>
+                                <input type="number" class="amount-input" id="amount" name="amount">
+                            </div>
+                            <div class="ci-cat">
+                                <label for="category">Category: </label>
+                                <select id="category" name="category">
+                                    <option value="Weapon">Weapon</option>
+                                    <option value="Armor">Armor</option>
+                                    <option value="Helmet">Helmet</option>
+                                    <option value="Boots">Boots</option>
+                                    <option value="Relic">Relic</option>
+                                    <option value="Potion">Potion</option>
+                                    <option value="Stone">Stone</option>
+                                    <option value="Ingredients">Ingredients</option>
+                                    <option value="Accessories">Accessories</option>
+                                    <option value="Item">Item</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ci-desc">
+                        <label for="description">Description: </label>
+                        <textarea type="textarea" name="description" id="description" class="textarea-input"></textarea>
+                    </div>
+                    <input id="btn-add-item" type="submit" value="Add Item"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span></span>
+
+<div class="remove-container" id="remove-modal">
+    <div id="background-remove"></div>
+    <div class="remove-content" id="remove-content">
+        <div class="title-content">
+            <h2>Remove Item</h2>
+        </div>
+        <div class="confirm-remove">
+            <p>Anda yakin ingin menghapus item ini?</p>
+        </div>
+        <div class="btn-remove">
+            <button class="btn-yes" id="btn-yes">Yes</button>
+            <button class="btn-no" id="btn-no" onclick="hideRemoveAlert()">No</button>
+        </div>
+    </div>
+</div>
+
+
+        <button class="button_add" id="btn-ajax">Add New Item Modal</button>
+        
+        <div id="button-add" class="btn">
         <a href="{% url 'main:create_item' %}">
             <button>
                 Add New Item
@@ -53,12 +135,135 @@
         </a>
     </div>  
         
-        <h5>Sesi terakhir login: {{last_login}}</h5>
-        
+    <h5>Sesi terakhir login: {{last_login}}</h5>
+    
         <a href="{% url 'main:logout' %}">
             <button>
                 Logout
             </button>
         </a>
 </div>
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshItems() {
+        document.getElementById('total-item').innerHTML = ""
+        document.getElementById("product-card").innerHTML = ""
+        const items = await getItems()
+        let htmlTotalItem = ``
+        let htmlString = ``
+        
+        items.forEach((item) => {
+            htmlString += `\n<div class="item">
+                <div class="image-item">
+                    ?
+                </div>
+                <div class="info-item">
+                    <div class="item-name"> 
+                        <p>${item.fields.name}</p>
+                    </div>
+                    <div class="item-grade">
+                        <p>Grade: ${item.fields.grade}</p>
+                    </div>
+                    <div class="item-amount">
+                        <p>x${item.fields.amount}</p>
+                    </div>
+                    <div class="btn-cmd">
+                        <button class="btn btn-success btn-sm" onclick="addAmount(${item.pk})">+</button>
+                        <button class="btn btn-danger btn-sm" onclick="removeAlert(${item.pk})">remove</button>
+                        <button class="btn btn-danger btn-sm" onclick="reduceAmount(${item.pk})">-</button>
+                    </div>   
+                </div>
+            </div>` 
+        })
+
+        htmlTotalItem += `\n<h4>Anda telah menambahkan ${items.length} barang ke dalam Inventory.</h4>`
+        
+        document.getElementById("total-item").innerHTML = htmlTotalItem
+        document.getElementById("product-card").innerHTML = htmlString
+    }
+
+    function addItem() {
+        fetch(`{% url 'main:add_item_ajax' %}`, {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    function addAmount(id) {
+        fetch(`/add_amount/${id}/`, {
+            method: "POST",
+            headers: {'X-CSRFToken': csrftoken},
+            mode: 'same-origin'
+        }).then(res => refreshItems())
+    }
+
+    function reduceAmount(id) {
+        fetch(`/reduce_amount/${id}/`, {
+            method: "POST",
+            headers: {'X-CSRFToken': csrftoken},
+            mode: 'same-origin'
+        }).then(res => refreshItems())
+    }
+
+
+    function deleteItem(id){
+        fetch(`/delete_item/${id}/`, {
+            method: "POST",
+            headers: {'X-CSRFToken': csrftoken},
+            mode: 'same-origin'
+        }).then(res => refreshItems())
+    }
+
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('c-modal').style.display = 'none';
+    document.getElementById('remove-modal').style.display = 'none';
+    document.getElementById('remove-content').style.display = 'none';
+
+    function displayCreateItem() {
+        document.getElementById('c-modal').style.display = 'flex';
+        document.getElementById('modal').style.display = 'block';
+    }
+    document.getElementById('btn-ajax').onclick = displayCreateItem
+    
+    function removeDisplayCreate() {
+        document.getElementById('c-modal').style.display = 'none';
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    function btnAddItem() {
+        addItem()
+        removeDisplayCreate()
+    }
+    
+    document.getElementById('background-modal').onclick = removeDisplayCreate
+    document.getElementById('btn-add-item').onclick = btnAddItem
+
+    function removeAlert(id) {
+        document.getElementById('remove-modal').style.display = 'flex';
+        document.getElementById('remove-content').style.display = 'block';
+
+        document.getElementById('btn-yes').addEventListener('click', function() {
+            deleteItem(id)
+            hideRemoveAlert()
+        });
+    }
+
+    function hideRemoveAlert() {
+        document.getElementById('remove-modal').style.display = 'none';
+        document.getElementById('remove-content').style.display = 'none';
+    }
+
+    document.getElementById('background-remove').onclick = hideRemoveAlert
+    refreshItems()
+
+</script>
 {% endblock content %}

@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -96,24 +97,60 @@ def logout_user(request):
 
 def add_amount(request, item_id):
     if request.method == 'POST':
-        item = get_object_or_404(Item, id=item_id)
+        item = Item.objects.get(pk=item_id)
         item.amount += 1
         item.save()
     
-    return redirect('main:show_main')
+    return HttpResponse(b"Add amount", status=201)
+    # return redirect('main:show_main')
 
 def reduce_amount(request, item_id):
     if request.method == 'POST':
-        item = get_object_or_404(Item, id=item_id)
+        item = Item.objects.get(id=item_id)
         if item.amount > 0:
             item.amount -= 1
             item.save()
         
-    return redirect('main:show_main')
+        if item.amount == 0:
+            item.delete()
+        
+    return HttpResponse(b"Reduce amount", status=201)
+    # return redirect('main:show_main')
 
 def delete_item(request, item_id):
     if request.method == 'POST':
         item = Item.objects.filter(pk=item_id)
         item.delete()
-    
-    return redirect('main:show_main')
+
+    return HttpResponse(b"Deleted", status=201)
+    # return redirect('main:show_main')
+
+def edit_item(request, id):
+    if request.method == 'POST':
+        item = Item.objects.get(pk=id)
+        new_description = request.POST.get("description")
+        item.description = new_description
+        item.save()
+
+def get_item_json(request):
+    item = Item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', item), content_type='application/json')
+
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        grade = request.POST.get("grade")
+        category = request.POST.get("category")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, grade=grade, category=category, description=description, user=user)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
